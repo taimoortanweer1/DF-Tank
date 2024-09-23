@@ -1,32 +1,7 @@
 #include "df_tank_v1.h"
-#include "ui_df_tank_v1.h"
-#include "qchartview.h"
-#include <QDebug>
-#include "Comunication.h"
-#include "DoWork.h"
 
-int x_itr=1, x_lop=0,top_count;
-//int numSamples = 1000000;    // 1 million samples
-int angl=1, pkt_loss=1 ;
-double f1=400000000;
-double f2=5900000000;
-int x_itr1z=0, x_lop1z=1;
-// float angle_to_addz=0.1757;
-float angle_to_addz=0.0078;
-//QVector<double> xxDataz;
-//QVector<double> yyDataz;
-//QVector<double> yyDataz2;
 
-QPolarChart *polarChartz;
-QLineSeries *series11z;
-QScatterSeries *series1z;
-QValueAxis *angularAxisz;
-QValueAxis *radialAxisz;
-QChartView *chartViewz;
-#include <QtCharts/QSplineSeries>
-QSplineSeries *seriez;
-QSplineSeries *seriez2;
-QVector<QPointF> peaks_info; // New vector to store the highest point
+
 
 df_tank_v1::df_tank_v1(QWidget *parent)
     : QMainWindow(parent)
@@ -190,6 +165,8 @@ df_tank_v1::df_tank_v1(QWidget *parent)
     //chartView->setMinimumSize(200, 380);
 
     ui->gridLayout->addWidget(chartViewz);
+
+    qRegisterMetaType<QVector<double>>("QVector<double>");
 }
 
 df_tank_v1::~df_tank_v1()
@@ -224,7 +201,7 @@ df_tank_v1::~df_tank_v1()
 //     }
 
 // }
-void df_tank_v1::do_plotting(QVector<double> &ydata,QVector<double> &xdata){
+void df_tank_v1::do_plotting(QVector<double> ydata, QVector<double> xdata){
     if(ydata.size() == 5760){
         qDebug() << "Recived Packet number 90================================================ SIZE: " << ydata.size() ;
         //qDebug() << "Recived Packet number 90================================================ XDATA SIZE: " << xxDataz.size() ;
@@ -649,7 +626,7 @@ void df_tank_v1::on_pushButton_clicked()
 
     comunication.trigger();
 
-    QObject::connect(&dowork, &DoWork::workFinished, this, &df_tank_v1::do_plotting);
+    QObject::connect(&dowork, SIGNAL(workFinished(QVector<double>,QVector<double>)), this, SLOT(do_plotting(QVector<double>,QVector<double>)));
 
 
 

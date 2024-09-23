@@ -1,16 +1,16 @@
 #include "DoWork.h"
 #include <QDebug>
-double f1=400000000;
-double f2=5900000000;
-int x_itr=1;
-int numSamples = 1000000;    // 1 million samples
-QVector<double> xxDataz;
-QVector<double> yyDataz;
-QVector<double> yyDataz2;
+
+
 DoWork::DoWork(QObject *parent)
     : QObject{parent}
 {
-    //res = 1;
+
+   f1=400000000;
+   f2=5900000000;
+   x_itr=1;
+   numSamples = 1000000;    // 1 million samples
+
 }
 
 void DoWork::myworkerfunction(const  QVector<double> &message)

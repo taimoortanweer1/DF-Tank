@@ -9,9 +9,17 @@ class DoWork : public QObject
 public:
     explicit DoWork(QObject *parent = nullptr);
 
+    double f1;
+    double f2;
+    int x_itr;
+    int numSamples;    // 1 million samples
+
+    QVector<double> xxDataz;
+    QVector<double> yyDataz;
+    QVector<double> yyDataz2;
 
 signals:
-    void workFinished(QVector<double> &ydata,QVector<double> &xdata);
+    void workFinished(QVector<double> ydata,QVector<double> xdata);
 
 public slots:
     void myworkerfunction(const  QVector<double> &message);
