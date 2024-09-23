@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Joystick.png</file>
+        <file>Reset.png</file>
+        <file>Shutdown.png</file>
+        <file>uni_logo (1).png</file>
+        <file>uni_logo185x80.png</file>
+        <file>Polygon 2.png</file>
+        <file>Polygon 4.png</file>
+        <file>Rectangle 3.png</file>
+        <file>Polygon 1.png</file>
+        <file>Polygon 3.png</file>
+    </qresource>
+</RCC>
