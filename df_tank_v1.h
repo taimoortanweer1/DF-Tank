@@ -53,6 +53,10 @@ private slots:
     void on_pushButton_5_clicked();
 
 private:
+
+    Comunication comunication;
+    DoWork dowork;
+
     Ui::df_tank_v1 *ui;
     QUdpSocket *socket2;
 

@@ -215,303 +215,303 @@ void df_tank_v1::do_plotting(QVector<double> ydata, QVector<double> xdata){
         ui->customplot->replot();
 
 
-        // //polar plotting start here---
-        if(angl==1){
-            float Qs=0.0;
-            QPointF highestPoint;
-            qreal maxY = std::numeric_limits<qreal>::lowest();
+        // // //polar plotting start here---
+        // if(angl==1){
+        //     float Qs=0.0;
+        //     QPointF highestPoint;
+        //     qreal maxY = std::numeric_limits<qreal>::lowest();
 
-            float detaa=Qs+angle_to_addz;
-            QVector<QPointF> newData;
+        //     float detaa=Qs+angle_to_addz;
+        //     QVector<QPointF> newData;
 
-            seriez->setName("Ploting Channel 1");
-            for(int z=0;z<ydata.size();++z){
-                newData.append(QPointF(detaa, qAbs(ydata[z])));
-                //ui->label_31->setText( QString::number(xxDataz[z]));
-
-
-                //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
+        //     seriez->setName("Ploting Channel 1");
+        //     for(int z=0;z<ydata.size();++z){
+        //         newData.append(QPointF(detaa, qAbs(ydata[z])));
+        //         //ui->label_31->setText( QString::number(xxDataz[z]));
+
+
+        //         //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
 
-                // series->append(detaa,yyData[z]);
-                detaa=detaa+angle_to_addz;
+        //         // series->append(detaa,yyData[z]);
+        //         detaa=detaa+angle_to_addz;
 
-            }
-
-            for (const QPointF &point : newData) {
-                if (point.y() > maxY) {
-                    maxY = point.y();
-                    highestPoint = point;
-                }
-            }
+        //     }
+
+        //     for (const QPointF &point : newData) {
+        //         if (point.y() > maxY) {
+        //             maxY = point.y();
+        //             highestPoint = point;
+        //         }
+        //     }
 
-            ui->label_32->setText( QString::number(highestPoint.y()));
-            ui->label_73->setText( QString::number(highestPoint.x()));
+        //     ui->label_32->setText( QString::number(highestPoint.y()));
+        //     ui->label_73->setText( QString::number(highestPoint.x()));
 
 
-            // Store the highest point in newData1
-            peaks_info.append(highestPoint);
-            //qDebug() << " Y high values ch 1 "<<highestPoint;
+        //     // Store the highest point in newData1
+        //     peaks_info.append(highestPoint);
+        //     //qDebug() << " Y high values ch 1 "<<highestPoint;
 
-            //series->replace(newData);
-            newData.clear();
-        }
-        if(angl==2){
-            float Qs=45.0;
-            QPointF highestPoint;
-            qreal maxY = std::numeric_limits<qreal>::lowest();
+        //     //series->replace(newData);
+        //     newData.clear();
+        // }
+        // if(angl==2){
+        //     float Qs=45.0;
+        //     QPointF highestPoint;
+        //     qreal maxY = std::numeric_limits<qreal>::lowest();
 
-            float detaa=Qs+angle_to_addz;
-            QVector<QPointF> newData;
-
-            seriez->setName("Ploting Channel 2");
-            for(int z=0;z<ydata.size();++z){
-                newData.append(QPointF(detaa, qAbs(ydata[z])));
-
-                //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
-
-                // series->append(detaa,yyData[z]);
-                detaa=detaa+angle_to_addz;
-
-            }
-
-            for (const QPointF &point : newData) {
-                if (point.y() > maxY) {
-                    maxY = point.y();
-                    highestPoint = point;
-                }
-            }
+        //     float detaa=Qs+angle_to_addz;
+        //     QVector<QPointF> newData;
+
+        //     seriez->setName("Ploting Channel 2");
+        //     for(int z=0;z<ydata.size();++z){
+        //         newData.append(QPointF(detaa, qAbs(ydata[z])));
+
+        //         //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
+
+        //         // series->append(detaa,yyData[z]);
+        //         detaa=detaa+angle_to_addz;
+
+        //     }
+
+        //     for (const QPointF &point : newData) {
+        //         if (point.y() > maxY) {
+        //             maxY = point.y();
+        //             highestPoint = point;
+        //         }
+        //     }
 
-            ui->label_37->setText( QString::number(highestPoint.y()));
-            ui->label_74->setText( QString::number(highestPoint.x()));
-            // Store the highest point in newData1
-            peaks_info.append(highestPoint);
-            qDebug() << " Y high values ch 2 "<<highestPoint;
-
-            //series->replace(newData);
-            newData.clear();
-
-        }
-        if(angl==3){
-            float Qs=90.0;
-            QPointF highestPoint;
-            qreal maxY = std::numeric_limits<qreal>::lowest();
-
-            float detaa=Qs+angle_to_addz;
-            QVector<QPointF> newData;
-
-            seriez->setName("Ploting Channel 3");
-            for(int z=0;z<ydata.size();++z){
-                newData.append(QPointF(detaa, qAbs(ydata[z])));
-
-                //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
-
-                // series->append(detaa,yyData[z]);
-                detaa=detaa+angle_to_addz;
-
-            }
-
-            for (const QPointF &point : newData) {
-                if (point.y() > maxY) {
-                    maxY = point.y();
-                    highestPoint = point;
-                }
-            }
-
-            ui->label_42->setText( QString::number(highestPoint.y()));
-            ui->label_75->setText( QString::number(highestPoint.x()));
-            // Store the highest point in newData1
-            peaks_info.append(highestPoint);
-            //qDebug() << " Y high values ch 3 "<<highestPoint;
-
-            //series->replace(newData);
-            newData.clear();
-        }
-        if(angl==4){
-            float Qs=135.0;
-            QPointF highestPoint;
-            qreal maxY = std::numeric_limits<qreal>::lowest();
-
-            float detaa=Qs+angle_to_addz;
-            QVector<QPointF> newData;
-
-            //seriez->setName("Ploting Channel 4");
-            for(int z=0;z<ydata.size();++z){
-                newData.append(QPointF(detaa, qAbs(ydata[z])));
-
-                //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
-
-                // series->append(detaa,yyData[z]);
-                detaa=detaa+angle_to_addz;
-
-            }
-
-            for (const QPointF &point : newData) {
-                if (point.y() > maxY) {
-                    maxY = point.y();
-                    highestPoint = point;
-                }
-            }
-
-            ui->label_47->setText( QString::number(highestPoint.y()));
-            ui->label_76->setText( QString::number(highestPoint.x()));
-            // Store the highest point in newData1
-            peaks_info.append(highestPoint);
-            //qDebug() << " Y high values ch 4 "<<highestPoint;
-
-            //series->replace(newData);
-            newData.clear();
-        }
-        if(angl==5){
-            float Qs=180.0;
-            QPointF highestPoint;
-            qreal maxY = std::numeric_limits<qreal>::lowest();
-
-            float detaa=Qs+angle_to_addz;
-            QVector<QPointF> newData;
-
-            seriez->setName("Ploting Channel 5");
-            for(int z=0;z<ydata.size();++z){
-                newData.append(QPointF(detaa, qAbs(ydata[z])));
-
-                //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
-
-                // series->append(detaa,yyData[z]);
-                detaa=detaa+angle_to_addz;
-
-            }
-
-            for (const QPointF &point : newData) {
-                if (point.y() > maxY) {
-                    maxY = point.y();
-                    highestPoint = point;
-                }
-            }
-
-            ui->label_52->setText( QString::number(highestPoint.y()));
-            ui->label_77->setText( QString::number(highestPoint.x()));
-            // Store the highest point in newData1
-            peaks_info.append(highestPoint);
-            //qDebug() << " Y high values ch 5 "<<highestPoint;
-
-            //series->replace(newData);
-            newData.clear();
-        }
-        if(angl==6){
-            float Qs=225.0;
-            QPointF highestPoint;
-            qreal maxY = std::numeric_limits<qreal>::lowest();
-
-            float detaa=Qs+angle_to_addz;
-            QVector<QPointF> newData;
-
-            seriez->setName("Ploting Channel 6");
-            for(int z=0;z<ydata.size();++z){
-                newData.append(QPointF(detaa, qAbs(ydata[z])));
-
-                //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
-
-                // series->append(detaa,yyData[z]);
-                detaa=detaa+angle_to_addz;
-
-            }
-
-            for (const QPointF &point : newData) {
-                if (point.y() > maxY) {
-                    maxY = point.y();
-                    highestPoint = point;
-                }
-            }
-
-            ui->label_57->setText( QString::number(highestPoint.y()));
-            ui->label_78->setText( QString::number(highestPoint.x()));
-            // Store the highest point in newData1
-            peaks_info.append(highestPoint);
-            //qDebug() << " Y high values ch 6 "<<highestPoint;
-
-            //series->replace(newData);
-            newData.clear();
-        }
-        if(angl==7){
-            float Qs=270.0;
-            QPointF highestPoint;
-            qreal maxY = std::numeric_limits<qreal>::lowest();
-
-            float detaa=Qs+angle_to_addz;
-            QVector<QPointF> newData;
-
-            seriez->setName("Ploting Channel 7");
-            for(int z=0;z<ydata.size();++z){
-                newData.append(QPointF(detaa, qAbs(ydata[z])));
-
-                //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
-
-                // series->append(detaa,yyData[z]);
-                detaa=detaa+angle_to_addz;
-
-            }
-
-            for (const QPointF &point : newData) {
-                if (point.y() > maxY) {
-                    maxY = point.y();
-                    highestPoint = point;
-                }
-            }
-
-            ui->label_67->setText( QString::number(highestPoint.y()));
-            ui->label_79->setText( QString::number(highestPoint.x()));
-            // Store the highest point in newData1
-            peaks_info.append(highestPoint);
-            //qDebug() << " Y high values ch 7 "<<highestPoint;
-
-            //series->replace(newData);
-            newData.clear();
-        }
-        if(angl==8){
-            angl=0;
-            float Qs=315.0;
-            QPointF highestPoint;
-            qreal maxY = std::numeric_limits<qreal>::lowest();
-
-            float detaa=Qs+angle_to_addz;
-            QVector<QPointF> newData;
-
-            seriez->setName("Ploting Channel 8");
-            for(int z=0;z<ydata.size();++z){
-                newData.append(QPointF(detaa, qAbs(ydata[z])));
-
-                //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
-
-                // series->append(detaa,yyData[z]);
-                detaa=detaa+angle_to_addz;
-
-            }
-
-            for (const QPointF &point : newData) {
-                if (point.y() > maxY) {
-                    maxY = point.y();
-                    highestPoint = point;
-                }
-            }
-
-            ui->label_72->setText( QString::number(highestPoint.y()));
-            ui->label_80->setText( QString::number(highestPoint.x()));
-            // Store the highest point in newData1
-            peaks_info.append(highestPoint);
-            //qDebug() << " Y high values ch 8 "<<highestPoint;
-            seriez->replace(peaks_info);
-            //series->append(newData1);
-            polarChartz->update();
-            chartViewz->update();
-            chartViewz->clearFocus();
-            polarChartz->clearFocus();
-            //series->replace(newData);
-            newData.clear();
-            peaks_info.clear();
-
-
-        }
-        //after if
-        angl +=1;
+        //     ui->label_37->setText( QString::number(highestPoint.y()));
+        //     ui->label_74->setText( QString::number(highestPoint.x()));
+        //     // Store the highest point in newData1
+        //     peaks_info.append(highestPoint);
+        //     qDebug() << " Y high values ch 2 "<<highestPoint;
+
+        //     //series->replace(newData);
+        //     newData.clear();
+
+        // }
+        // if(angl==3){
+        //     float Qs=90.0;
+        //     QPointF highestPoint;
+        //     qreal maxY = std::numeric_limits<qreal>::lowest();
+
+        //     float detaa=Qs+angle_to_addz;
+        //     QVector<QPointF> newData;
+
+        //     seriez->setName("Ploting Channel 3");
+        //     for(int z=0;z<ydata.size();++z){
+        //         newData.append(QPointF(detaa, qAbs(ydata[z])));
+
+        //         //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
+
+        //         // series->append(detaa,yyData[z]);
+        //         detaa=detaa+angle_to_addz;
+
+        //     }
+
+        //     for (const QPointF &point : newData) {
+        //         if (point.y() > maxY) {
+        //             maxY = point.y();
+        //             highestPoint = point;
+        //         }
+        //     }
+
+        //     ui->label_42->setText( QString::number(highestPoint.y()));
+        //     ui->label_75->setText( QString::number(highestPoint.x()));
+        //     // Store the highest point in newData1
+        //     peaks_info.append(highestPoint);
+        //     //qDebug() << " Y high values ch 3 "<<highestPoint;
+
+        //     //series->replace(newData);
+        //     newData.clear();
+        // }
+        // if(angl==4){
+        //     float Qs=135.0;
+        //     QPointF highestPoint;
+        //     qreal maxY = std::numeric_limits<qreal>::lowest();
+
+        //     float detaa=Qs+angle_to_addz;
+        //     QVector<QPointF> newData;
+
+        //     //seriez->setName("Ploting Channel 4");
+        //     for(int z=0;z<ydata.size();++z){
+        //         newData.append(QPointF(detaa, qAbs(ydata[z])));
+
+        //         //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
+
+        //         // series->append(detaa,yyData[z]);
+        //         detaa=detaa+angle_to_addz;
+
+        //     }
+
+        //     for (const QPointF &point : newData) {
+        //         if (point.y() > maxY) {
+        //             maxY = point.y();
+        //             highestPoint = point;
+        //         }
+        //     }
+
+        //     ui->label_47->setText( QString::number(highestPoint.y()));
+        //     ui->label_76->setText( QString::number(highestPoint.x()));
+        //     // Store the highest point in newData1
+        //     peaks_info.append(highestPoint);
+        //     //qDebug() << " Y high values ch 4 "<<highestPoint;
+
+        //     //series->replace(newData);
+        //     newData.clear();
+        // }
+        // if(angl==5){
+        //     float Qs=180.0;
+        //     QPointF highestPoint;
+        //     qreal maxY = std::numeric_limits<qreal>::lowest();
+
+        //     float detaa=Qs+angle_to_addz;
+        //     QVector<QPointF> newData;
+
+        //     seriez->setName("Ploting Channel 5");
+        //     for(int z=0;z<ydata.size();++z){
+        //         newData.append(QPointF(detaa, qAbs(ydata[z])));
+
+        //         //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
+
+        //         // series->append(detaa,yyData[z]);
+        //         detaa=detaa+angle_to_addz;
+
+        //     }
+
+        //     for (const QPointF &point : newData) {
+        //         if (point.y() > maxY) {
+        //             maxY = point.y();
+        //             highestPoint = point;
+        //         }
+        //     }
+
+        //     ui->label_52->setText( QString::number(highestPoint.y()));
+        //     ui->label_77->setText( QString::number(highestPoint.x()));
+        //     // Store the highest point in newData1
+        //     peaks_info.append(highestPoint);
+        //     //qDebug() << " Y high values ch 5 "<<highestPoint;
+
+        //     //series->replace(newData);
+        //     newData.clear();
+        // }
+        // if(angl==6){
+        //     float Qs=225.0;
+        //     QPointF highestPoint;
+        //     qreal maxY = std::numeric_limits<qreal>::lowest();
+
+        //     float detaa=Qs+angle_to_addz;
+        //     QVector<QPointF> newData;
+
+        //     seriez->setName("Ploting Channel 6");
+        //     for(int z=0;z<ydata.size();++z){
+        //         newData.append(QPointF(detaa, qAbs(ydata[z])));
+
+        //         //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
+
+        //         // series->append(detaa,yyData[z]);
+        //         detaa=detaa+angle_to_addz;
+
+        //     }
+
+        //     for (const QPointF &point : newData) {
+        //         if (point.y() > maxY) {
+        //             maxY = point.y();
+        //             highestPoint = point;
+        //         }
+        //     }
+
+        //     ui->label_57->setText( QString::number(highestPoint.y()));
+        //     ui->label_78->setText( QString::number(highestPoint.x()));
+        //     // Store the highest point in newData1
+        //     peaks_info.append(highestPoint);
+        //     //qDebug() << " Y high values ch 6 "<<highestPoint;
+
+        //     //series->replace(newData);
+        //     newData.clear();
+        // }
+        // if(angl==7){
+        //     float Qs=270.0;
+        //     QPointF highestPoint;
+        //     qreal maxY = std::numeric_limits<qreal>::lowest();
+
+        //     float detaa=Qs+angle_to_addz;
+        //     QVector<QPointF> newData;
+
+        //     seriez->setName("Ploting Channel 7");
+        //     for(int z=0;z<ydata.size();++z){
+        //         newData.append(QPointF(detaa, qAbs(ydata[z])));
+
+        //         //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
+
+        //         // series->append(detaa,yyData[z]);
+        //         detaa=detaa+angle_to_addz;
+
+        //     }
+
+        //     for (const QPointF &point : newData) {
+        //         if (point.y() > maxY) {
+        //             maxY = point.y();
+        //             highestPoint = point;
+        //         }
+        //     }
+
+        //     ui->label_67->setText( QString::number(highestPoint.y()));
+        //     ui->label_79->setText( QString::number(highestPoint.x()));
+        //     // Store the highest point in newData1
+        //     peaks_info.append(highestPoint);
+        //     //qDebug() << " Y high values ch 7 "<<highestPoint;
+
+        //     //series->replace(newData);
+        //     newData.clear();
+        // }
+        // if(angl==8){
+        //     angl=0;
+        //     float Qs=315.0;
+        //     QPointF highestPoint;
+        //     qreal maxY = std::numeric_limits<qreal>::lowest();
+
+        //     float detaa=Qs+angle_to_addz;
+        //     QVector<QPointF> newData;
+
+        //     seriez->setName("Ploting Channel 8");
+        //     for(int z=0;z<ydata.size();++z){
+        //         newData.append(QPointF(detaa, qAbs(ydata[z])));
+
+        //         //qDebug() << "Q theta Values: " << detaa << " Y values "<<yyData[z];
+
+        //         // series->append(detaa,yyData[z]);
+        //         detaa=detaa+angle_to_addz;
+
+        //     }
+
+        //     for (const QPointF &point : newData) {
+        //         if (point.y() > maxY) {
+        //             maxY = point.y();
+        //             highestPoint = point;
+        //         }
+        //     }
+
+        //     ui->label_72->setText( QString::number(highestPoint.y()));
+        //     ui->label_80->setText( QString::number(highestPoint.x()));
+        //     // Store the highest point in newData1
+        //     peaks_info.append(highestPoint);
+        //     //qDebug() << " Y high values ch 8 "<<highestPoint;
+        //     seriez->replace(peaks_info);
+        //     //series->append(newData1);
+        //     polarChartz->update();
+        //     chartViewz->update();
+        //     chartViewz->clearFocus();
+        //     polarChartz->clearFocus();
+        //     //series->replace(newData);
+        //     newData.clear();
+        //     peaks_info.clear();
+
+
+        // }
+        // //after if
+        // angl +=1;
 
 
 
@@ -618,8 +618,6 @@ void df_tank_v1::on_pushButton_clicked()
                                   "background-color: #a3a3a3; "
                                   "} ");
     qDebug() << " Clicked Start ";
-    DoWork dowork;
-    Comunication comunication;
 
 
     QObject::connect(&comunication, &Comunication::sendpacket, &dowork, &DoWork::myworkerfunction);

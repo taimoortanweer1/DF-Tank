@@ -13,10 +13,18 @@ public:
     double f2;
     int x_itr;
     int numSamples;    // 1 million samples
+    int data_size = 5760;
 
     QVector<double> xxDataz;
     QVector<double> yyDataz;
     QVector<double> yyDataz2;
+    QVector<double> random_data;
+    QVector<double> dB_list;
+    QVector<double> index_list;
+
+
+
+
 
 signals:
     void workFinished(QVector<double> ydata,QVector<double> xdata);

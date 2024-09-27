@@ -4,7 +4,9 @@
 Comunication::Comunication(QObject *parent)
     : QObject{parent}
 {
-
+    // timer = new QTimer;
+    // connect(timer,SIGNAL(timeout()),this,SLOT(readDatagramsSimulateData()));
+    // timer->start(100);
 }
 void Comunication::trigger(){
 
@@ -14,6 +16,8 @@ void Comunication::trigger(){
     myudpsocket->bind(QHostAddress::Any, 9000); // Bind to the specified local host address and port 7
 
     connect(myudpsocket, &QUdpSocket::readyRead, this, &Comunication::readDatagrams);
+
+    qDebug() << " IN Communication Class  :  ";
 
 
     //emit sendpacket("Hello from Sender!");
@@ -57,8 +61,8 @@ void Comunication::readDatagrams() {
 
             QString chunk = datagram.mid(i, chunkSize);
 
-            //qDebug() << " Recived Value Over WIFI HEX Individulae  :  "<< datagram[i];
-            //qDebug() << " Recived Value Over WIFI HEX Chunk  :  "<< chunk;
+            qDebug() << " Recived Value Over WIFI HEX Individulae  :  "<< datagram[i];
+            qDebug() << " Recived Value Over WIFI HEX Chunk  :  "<< chunk;
 
 
             QString hexString =chunk;
@@ -70,7 +74,80 @@ void Comunication::readDatagrams() {
 
             if (ok) {
                 yyDataz.append(intValue);
-                //qDebug() << "The integer value of :"<<chunk << "IS" << intValue;
+                qDebug() << "The integer value of :"<<chunk << "IS" << intValue;
+            } else {
+                qDebug() << "Conversion failed.";
+            }
+            //qDebug() << " Recived Value Over WIFI HEX Individulae  :  "<< datagram[i];
+
+
+        }
+
+
+        //do_processing();
+        emit sendpacket(yyDataz);
+        yyDataz.clear();
+
+
+    }
+
+}
+
+void Comunication::readDatagramsSimulateData() {
+    //qDebug() << " Inscope  :  ";
+    QVector<double> yyDataz;
+    //while (myudpsocket->hasPendingDatagrams())
+    {
+
+
+        QByteArray datagram;
+        datagram.resize(8);
+
+        datagram[0]=0x00;
+        datagram[1]=0x00;
+        datagram[2]=0x00;
+        datagram[3]=0x01;
+        datagram[4]=0x00;
+        datagram[5]=0x00;
+        datagram[6]=0x02;
+        datagram[7]=0x01;
+
+        //datagram.resize(myudpsocket->pendingDatagramSize());
+        QHostAddress sender;
+        quint16 senderPort;
+
+        //myudpsocket->readDatagram(datagram.data(), datagram.size(), &sender, &senderPort);
+
+        //Ensure the size of the received data is a multiple of 4 bytes (size of int32_t)
+        // if (datagram.size() % sizeof(int32_t) != 0) {
+        //     qDebug() << "Received data size is not a multiple of 4 bytes";
+        //     continue;
+        // }
+
+
+        datagram=datagram.toHex();
+        //qDebug() << " Recived Complete Data Gram  :  "<< datagram;
+
+        int chunkSize = 8;
+
+        for (int i = 0; i < datagram.size(); i += chunkSize) {
+
+            QString chunk = datagram.mid(i, chunkSize);
+
+            qDebug() << " Recived Value Over WIFI HEX Individulae  :  "<< datagram[i];
+            qDebug() << " Recived Value Over WIFI HEX Chunk  :  "<< chunk;
+
+
+            QString hexString =chunk;
+
+            // Example hexadecimal string
+
+            bool ok;
+            int intValue = hexString.toInt(&ok, 16);  // 16 indicates hexadecimal base
+
+            if (ok) {
+                yyDataz.append(intValue);
+                qDebug() << "The integer value of :"<<chunk << "IS" << intValue;
             } else {
                 qDebug() << "Conversion failed.";
             }

@@ -3,7 +3,8 @@
 
 #include <QObject>
 #include <QUdpSocket>
-
+#include <QTimer>
+#include <QByteArray>
 class Comunication : public QObject
 {
     Q_OBJECT
@@ -17,8 +18,10 @@ public slots:
 private slots:
     void readDatagrams();
 
+    void readDatagramsSimulateData();
 private:
     QUdpSocket *myudpsocket;
+    QTimer *timer;
 
 };
 
